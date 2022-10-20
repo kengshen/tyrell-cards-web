@@ -4,3 +4,10 @@ export function fetchCount(amount = 1) {
     setTimeout(() => resolve({ data: amount }), 500)
   );
 }
+
+
+export function fetchMockData() {
+  return new Promise<{ data: string }>((resolve) =>
+    setTimeout(() => resolve({ data: 'mock data' }), 500)
+  );
+}

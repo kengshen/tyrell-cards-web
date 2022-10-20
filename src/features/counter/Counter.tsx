@@ -5,14 +5,15 @@ import {
   decrement,
   increment,
   incrementByAmount,
-  incrementAsync,
-  incrementIfOdd,
-  selectCount,
+  resetCount,
 } from './counterSlice';
 import styles from './Counter.module.css';
+import { selectCount, selectStatus } from './counterSelectors';
+import { incrementAsync, incrementIfOdd } from './counterThunkActions';
 
-export function Counter() {
+const Counter = () => {
   const count = useAppSelector(selectCount);
+  const status = useAppSelector(selectStatus);
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 
@@ -36,6 +37,13 @@ export function Counter() {
         >
           +
         </button>
+        <button
+          className={styles.button}
+          aria-label="Reset"
+          onClick={() => dispatch(resetCount())}
+        >
+          reset
+        </button>
       </div>
       <div className={styles.row}>
         <input
@@ -51,10 +59,11 @@ export function Counter() {
           Add Amount
         </button>
         <button
-          className={styles.asyncButton}
+          className={styles.button}
           onClick={() => dispatch(incrementAsync(incrementValue))}
         >
           Add Async
+          {status === 'loading' && '...'}
         </button>
         <button
           className={styles.button}
@@ -65,4 +74,6 @@ export function Counter() {
       </div>
     </div>
   );
-}
+};
+
+export default Counter;
