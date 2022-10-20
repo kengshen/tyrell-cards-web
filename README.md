@@ -31,12 +31,12 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 Runs `npm install` to install dependencies
 
-Runs the app with `npm start` script above
+Runs the app with `npm start` script above<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 You should be seeing Card Page with input to enter no. of players
 
 ### Input restriction
 
-Entered value must be a valid number
+Entered value must be a valid number<br />
 Valid number range from 1 - 99, other than that will be out of range
